@@ -23,6 +23,7 @@ const navigate=useNavigate();
     const data=await registerResponse.json();
      console.log(data)
     setFormData(initialState);
+    navigate('/login')
   }
   if(localStorage.getItem('user')&&JSON.parse(localStorage.getItem('user'))){
     return <Navigate to={'/'} replace/>
@@ -72,7 +73,7 @@ const navigateToLogin=()=>{
           placeholder="Enter your password"
         />
       </div>
-      <button type="Submit" className="btn btn-primary btn-block m-2" onClick={handleSubmit}>Submit</button>
+      <button type="Submit" className="btn btn-primary btn-block m-2" onClick={handleSubmit} >Submit</button>
       <div className="form-footer m-1">
           <p>Already have an account ? <button onClick={navigateToLogin} className="btn btn-success m-4">Login</button></p>
           
