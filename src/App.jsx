@@ -8,6 +8,7 @@ import Forgot from './pages/Forgot';
 import UpdatePassword from './pages/UpdatePassword';
 import Verify from './pages/Verify';
 import SuccessPage from './pages/SuccessPage';
+import Info from './pages/Info';
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/updatePassword' element={<UpdatePassword/>}/>
         <Route path='/verify' element={<Verify/>}/>
         <Route path='/success' element={<SuccessPage/>}/>
+        <Route path='/info' element={<Info/>}/>
       </Route>
       </Routes>
     </BrowserRouter>

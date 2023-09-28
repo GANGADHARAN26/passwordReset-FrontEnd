@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { backendUrl } from "../../config";
+import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 
 const Forgot = () => {
     const [email, setEmail] = useState('');
-
+    const navigate=useNavigate();
     const handleEmailChange = (e) => {
       setEmail(e.target.value);
     };
@@ -12,7 +13,7 @@ const Forgot = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       console.log("email : "+email)
-      localStorage.setItem('forgot-email',JSON.stringify(email))
+      
       const forgotResponse=await fetch(`${backendUrl}/forgotPassword`,{
         method: "POST",
         body:JSON.stringify({email}),
@@ -24,9 +25,12 @@ const Forgot = () => {
        console.log(data)
       
       setEmail("")
-
-    };
-  
+      
+    }; 
+    const navigateToInfo=()=>{
+       navigate('/info')
+    }
+    
     return (
       <section className="container-fluid" style={{marginTop:'11%'}}>
       <section className="row justify-content-center">
@@ -43,7 +47,7 @@ const Forgot = () => {
               onChange={handleEmailChange}
             />
           </div>
-          <button type="submit" onClick={handleSubmit} className="btn btn-primary btn-block m-2">Submit</button>
+          <button type="submit" onClick={()=>{handleSubmit();navigateToInfo();}}  className="btn btn-primary btn-block m-1">Send Verification Link to Email</button>
         </form>
         </section>
     </section>
