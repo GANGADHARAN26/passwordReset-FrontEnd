@@ -22,19 +22,16 @@ const navigate=useNavigate();
         })
 
         const data=await loginResponse.json();
-        if(loginResponse.status===404)
+        if(loginResponse.status===200)
         {
-            alert('login failed')
+          alert('login successful')
+          localStorage.setItem('user',JSON.stringify(data))
+          setFormData(initialState)
         }
         else{
-            alert('login successful')
-        localStorage.setItem('user',JSON.stringify(data))
-        setFormData(initialState)
-        
+          alert('login failed')
         }
       } 
-
- 
       if(localStorage.getItem('user')&&JSON.parse(localStorage.getItem('user'))){
         return <Navigate to={'/'} replace/>
 }
